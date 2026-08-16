@@ -1,6 +1,7 @@
 # Operating system files
 .DS_Store
 Thumbs.db
+.idea/
 
 # VS Code settings
 .vscode/
