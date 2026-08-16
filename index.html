@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PriceCompare Local</title>
+    <title>PriceWise</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,19 +13,81 @@
 <body>
 
     <header>
-        <h1>PriceCompare Local</h1>
+        <nav>
+
+           
+            <div class="logo">
+                🛒 PriceWise
+            </div>
+
+           
+            <button class="menu-button" onclick="toggleMenu()">
+                ☰
+            </button>
+
+            
+            <ul id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="shop-form.html">Register Shop</a></li>
+            </ul>
+
+            
+            <button id="theme-toggle" class="theme-btn">
+                ☀️
+            </button>
+
+        </nav>
     </header>
 
-    <main>
-        <h2>Compare local prices. Shop smarter.</h2>
 
-        <p>
-            Find and compare prices from nearby small shops.
-        </p>
+    <main>
+
+        <section class="hero" id="home">
+        
+            
+            <div class="hero-images">
+        
+                <div class="image-card">
+                    <img src="images/9.jpeg" alt="Local shop">
+                </div>
+                <div class="image-card">
+                    <img src="images/local-shop.jpeg" alt="Local shop">
+
+                </div>
+        
+            </div>
+        
+        
+            
+            <div class="hero-content">
+        
+                <p class="hero-small-text">
+                    COMPARE LOCAL PRICES
+                </p>
+        
+                <h1 class="typing">
+                    Shop smarter with
+                    <span>PriceWise</span>
+                </h1>
+        
+                <p class="hero-description">
+                    Find products, compare prices from local shops,
+                    and choose the best price near you.
+                </p>
+        
+                <a href="products.html" class="hero-button">
+                    Compare Prices
+                </a>
+        
+            </div>
+        
+        </section>
+
     </main>
 
-    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 
 </body>
+
 </html>

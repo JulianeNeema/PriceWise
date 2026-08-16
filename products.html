@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PriceWise</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #2d5a3e,#14251b);
+    color: rgb(27, 151, 3);
+    overflow-x: hidden;
+}
+
+.search-section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 70px 24px 50px;
+}
+
+.search-section > h2 {
+    text-align: center;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.search-section > p {
+    text-align: center;
+    color: #68736d;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.search-box {
+    max-width: 760px;
+    margin: 0 auto 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #63a544;
+    padding: 8px;
+
+    border: 1px solid #4f6657;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 30px rgba(20, 60, 35, 0.07);
+}
+
+.search-box input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    padding: 15px 18px;
+
+    background: transparent;
+
+    color: #17211b;
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: #9aa39e;
+}
+
+.search-box button {
+    border: none;
+
+    padding: 14px 28px;
+
+    border-radius: 10px;
+
+    background: #1f9d55;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.search-box button:hover {
+    background: #178447;
+    transform: translateY(-1px);
+}
+
+
+
+.filters {
+    max-width: 760px;
+    margin: 0 auto 50px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.filter-group {
+    background: #ffffff;
+
+    padding: 16px 18px;
+
+    border: 1px solid #e1e7e3;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 16px rgba(20, 60, 35, 0.04);
+}
+
+.filter-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #4c5951;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.filter-group select {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #17211b;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+
+#searchResults {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+    margin-top: 25px;
+}
+
+.product-result {
+    background: #ffffff;
+
+    padding: 24px;
+
+    border: 1px solid #e1e7e3;
+    border-radius: 16px;
+
+    box-shadow: 0 5px 20px rgba(20, 60, 35, 0.05);
+
+    transition: 0.25s ease;
+}
+
+.product-result:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 28px rgba(20, 60, 35, 0.10);
+}
+
+.product-result h3 {
+    margin-bottom: 8px;
+
+    color: #17211b;
+    font-size: 21px;
+}
+
+.product-result p {
+    margin-bottom: 20px;
+
+    color: #68736d;
+    font-size: 14px;
+}
+
+.product-result .compare-btn {
+    width: 100%;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #1f9d55;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.product-result .compare-btn:hover {
+    background: #178447;
+}
+
+.products {
+    max-width: 1200px;
+    margin: auto;
+    padding: 100px 30px;
+}
+
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: 35px auto 0;
+}
+
+.product-card {
+    
+    background-color: #161b22;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+} 
+.product-content {
+    padding: 25px;
+}
+
+.product-content h3 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.product-content p {
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.product-button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 11px;
+
+    border: 1px solid #1f9d55;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #22b305;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+#comparisonResults {
+    margin-top: 35px;
+}
+
+.comparison-card {
+    max-width: 850px;
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7e3;
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow: 0 8px 30px rgba(20, 60, 35, 0.06);
+}
+
+.comparison-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #edf1ee;
+}
+
+.best-price {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #e7f7ed;
+    color: #178447;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #edf1ee;
+}
+
+.shop-info h4 {
+    margin-bottom: 4px;
+}
+
+.shop-info p {
+    color: #68736d;
+    font-size: 14px;
+}
+
+.price {
+    text-align: right;
+}
+
+.price strong {
+    display: block;
+
+    color: #17211b;
+    font-size: 19px;
+}
+
+.cheapest {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    color: #1f9d55;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+
+.shops {
+    padding: 80px 24px;
+}
+
+.shops .container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.shops h2 {
+    text-align: center;
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+.shops .section-description {
+    text-align: center;
+
+    max-width: 600px;
+    margin: 0 auto 35px;
+
+    color: #68736d;
+}
+
+.shop-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.shop-card {
+    background: #ffffff;
+
+    border: 1px solid #e1e7e3;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 20px rgba(20, 60, 35, 0.05);
+
+    transition: 0.25s ease;
+}
+
+.shop-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 28px rgba(20, 60, 35, 0.10);
+}
+
+.shop-image {
+    min-height: 130px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf8ef;
+
+    font-size: 48px;
+}
+
+.shop-card .shop-info {
+    padding: 22px;
+}
+
+.shop-category,
+.product-category {
+    color: #1f9d55;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.shop-card h3 {
+    margin: 8px 0;
+
+    font-size: 20px;
+}
+
+.shop-location,
+.shop-products {
+    color: #68736d;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.shop-button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 11px;
+
+    border: 1px solid #1f9d55;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #178447;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.shop-button:hover {
+    background: #eaf8ef;
+}
+
+
+
+
+.shop-details {
+    padding: 20px 24px 80px;
+}
+
+.shop-details-card {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    padding: 30px;
+
+    border: 1px solid #e1e7e3;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 30px rgba(20, 60, 35, 0.06);
+}
+
+.shop-details-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #edf1ee;
+}
+
+.shop-details-image {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #eaf8ef;
+
+    font-size: 36px;
+}
+
+.shop-details-title h2 {
+    margin: 5px 0;
+}
+
+.shop-details-title p {
+    color: #68736d;
+}
+
+.shop-contact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    padding: 25px 0;
+}
+
+.shop-contact > div {
+    padding: 18px;
+
+    background: #f7faf8;
+
+    border-radius: 10px;
+}
+
+.shop-contact strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #1f9d55;
+}
+
+.shop-contact p {
+    color: #68736d;
+}
+
+.shop-about {
+    padding: 10px 0 25px;
+}
+
+.shop-about h3,
+.shop-products-list h3 {
+    margin-bottom: 10px;
+}
+
+.shop-about p {
+    color: #68736d;
+}
+
+.shop-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid #edf1ee;
+}
+
+.shop-product p {
+    color: #68736d;
+    font-size: 13px;
+}
+
+.shop-product strong {
+    color: #178447;
+}
+
+.contact-shop-button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #1f9d55;
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.shop-updated,
+.updated {
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: #8a948e;
+
+    font-size: 12px;
+}
+
+
+
+.shop-cta {
+    max-width: 1000px;
+
+    margin: 30px auto 80px;
+
+    padding: 60px 25px;
+
+    text-align: center;
+
+    background: #eaf8ef;
+
+    border-radius: 20px;
+}
+
+.shop-cta h2 {
+    margin-bottom: 10px;
+
+    font-size: 32px;
+}
+
+.shop-cta p {
+    max-width: 580px;
+
+    margin: 0 auto 25px;
+
+    color: #68736d;
+}
+
+
+.products-page {
+    background: #f8faf9;
+    min-height: 100vh;
+}
+
+
+
+.products-hero {
+    text-align: center;
+    padding: 70px 20px 45px;
+
+    background: #ffffff;
+}
+
+.section-label {
+    color: #16a34a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.products-hero h1 {
+    font-size: clamp(38px, 6vw, 58px);
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.products-hero h1 span {
+    color: #16a34a;
+}
+
+.products-hero>p:last-child {
+    color: #6b7280;
+    font-size: 17px;
+    max-width: 600px;
+    margin: auto;
+}
+
+
+
+.search-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 20px 70px;
+}
+
+
+
+.search-box {
+    max-width: 750px;
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    background: white;
+    padding: 7px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.search-box input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    padding: 14px 16px;
+
+    font-size: 16px;
+    background: transparent;
+}
+
+.search-box button {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 8px;
+
+    background: #16a34a;
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #15803d;
+}
+
+
+
+.filters {
+    max-width: 750px;
+    margin: 0 auto 55px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.filter-group {
+    background: white;
+
+    padding: 16px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.filter-group label {
+    display: block;
+
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.filter-group select {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 15px;
+    color: #1f2937;
+}
+
+
+
+.results-section {
+    margin-top: 20px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.section-heading p {
+    color: #6b7280;
+}
+
+
+
+#searchResults {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.product-result {
+    background: #ffffff;
+
+    padding: 25px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+
+    transition: 0.2s ease;
+}
+
+.product-result:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.product-result h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.product-result p {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.compare-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background: #16a34a;
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.compare-btn:hover {
+    background: #15803d;
+}
+
+
+
+.comparison-section {
+    margin-top: 55px;
+}
+
+#comparisonResults {
+    background: transparent;
+}
+
+
+
+.shop-cta {
+    margin-top: 80px;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+    background: #ecfdf5;
+
+    border-radius: 18px;
+}
+
+.shop-cta h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.shop-cta p:not(.section-label) {
+    max-width: 550px;
+    margin: 0 auto 25px;
+
+    color: #6b7280;
+}
+.shop-image {
+    width: 400px;
+    height: 400px;
+
+    border-radius: 30%;
+    overflow: hidden;
+}
+
+.shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shop-details-image {
+    width: 320px;
+    height: 400px;
+
+    border-radius: 30%;
+    overflow: hidden;
+}
+
+.shop-details-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.hero-button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border-radius: 9px;
+
+    background: #16a34a;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+}
+
+.hero-button:hover {
+    background: #15803d;
+
+    transform: translateY(-3px);
+}
+
+
+.phone-popup {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-popup.show {
+    display: flex;
+}
+
+.phone-popup-content {
+    position: relative;
+
+    width: 90%;
+    max-width: 380px;
+
+    padding: 35px 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    border: none;
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.phone-icon {
+    font-size: 40px;
+
+    margin-bottom: 10px;
+}
+
+.phone-popup-content h2 {
+    margin-bottom: 10px;
+}
+
+.phone-popup-content p {
+    color: #666;
+}
+
+.phone-number {
+    display: block;
+
+    margin: 15px 0 20px;
+
+    color: #16a34a;
+
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.call-btn {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    background: #16a34a;
+    color: white;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+
+    .products-hero {
+        padding: 50px 20px 35px;
+    }
+
+    .products-hero h1 {
+        font-size: 40px;
+    }
+
+    .search-section {
+        padding: 30px 16px 50px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        padding: 8px;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    #searchResults {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-cta {
+        padding: 45px 20px;
+    }
+
+    .shop-cta h2 {
+        font-size: 26px;
+    }
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    #searchResults,
+    .shop-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shop-contact {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .search-section {
+        padding: 50px 16px;
+    }
+
+    .search-section > h2 {
+        font-size: 30px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    #searchResults,
+    .shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-card {
+        padding: 20px;
+    }
+
+    .price-row {
+        gap: 15px;
+    }
+
+    .shop-details-header {
+        align-items: flex-start;
+    }
+
+    .shop-cta {
+        margin: 20px 16px 60px;
+        padding: 45px 20px;
+    }
+
+    .shop-cta h2 {
+        font-size: 26px;
+    }
+}
+
+
+
+.products {
+    background-color: #f7f8fc;
+}
+
+.products h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card {
+    background-color: rgb(79, 121, 67);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+/* Card hover */
+
+.product-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.product-image {
+    width: 100%;
+
+    height: 200px;
+
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   PRODUCT INFORMATION
+========================= */
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    display: inline-block;
+
+    background-color: #eeeafe;
+
+    color: #cecbe4;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+}
+
+.product-info h3 {
+    font-size: 26px;
+
+    margin-bottom: 6px;
+}
+
+.product-price {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.shop-name,
+.shop-location {
+    color: #666;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+
+
+
+.product-button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    /* background-color: #16e249; */
+
+    color: white;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 5px #16e249,0 0 25px #16e249;
+}
+
+.product-button:hover {
+
+    box-shadow: 0 0 5px #16e249,0 0 25px #16e249,0 0 50px #16e249,0 0 100px #16e249, 0 0 200px;
+}
+.comparison-button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    background-color: #16e249;
+
+    color: white;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+}
+.comparison-button:hover {
+
+    box-shadow: 0 0 5px #16e249,0 0 25px #16e249,0 0 50px #16e249,0 0 100px #16e249, 0 0 200px;
+}
+    </style>
+</head>
+
+<body>
+<button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+    <span class="theme-icon">🌙</span>
+</button>
+<section class="search-section">
+
+    <h2>Find the best local prices</h2>
+
+    <p>
+        Search for a product and compare prices from nearby shops.
+    </p>
+
+    <div class="search-box">
+
+        <input type="text" id="searchInput" placeholder="Search for a product...">
+
+        <button id="searchButton">
+            Search
+        </button>
+
+    </div>
+
+   
+    <div id="searchResults"></div>
+
+   
+    <div class="filters">
+
+        
+        <div class="filter-group">
+
+            <label for="categorySelect">
+                Filter by category:
+            </label>
+
+            <select id="categorySelect">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="Food">
+                    Grocery
+                </option>
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Clothing">
+                    Clothing
+                </option>
+
+                <option value="Drinks">
+                    Drinks
+                </option>
+
+                <option value="Materials">
+                    Materials
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label for="locationSelect">
+                Filter by location:
+            </label>
+
+            <select id="locationSelect">
+
+                <option value="all">
+                    All Locations
+                </option>
+
+                <option value="Kalerwe">
+                    Kalerwe
+                </option>
+
+                <option value="Ntinda">
+                    Ntinda
+                </option>
+
+                <option value="Nakawa">
+                    Nakawa
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div id="comparisonResults"></div>
+</section>
+
+
+<section class="products" id="products">
+
+    <div class="container">
+
+        <h2>Popular Products</h2>
+
+        <p class="section-description">
+            Find products and compare prices from local shops.
+        </p>
+
+
+        
+
+        <div class="product-grid">
+
+            
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="images/2.jpeg" alt="Rice 5kg">
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        grocery
+                    </span>
+
+                    <h3>Rice 5kg</h3>
+
+                    <p class="product-price">
+                        UGX 17,500
+                    </p>
+
+                    <p class="shop-name">
+                         Mama Sarah Shop
+                    </p>
+
+                    <p class="shop-location">
+                         mukondo
+                    </p>
+
+                    <button class="product-button">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="images/6.jpeg" alt="">
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        drinks
+                    </span>
+
+                    <h3>Soda</h3>
+
+                    <p class="product-price">
+                        UGX 5,000
+                    </p>
+
+                    <p class="shop-name">
+                         Bosko's Shop
+                    </p>
+
+                    <p class="shop-location">
+                         Bukere-A
+                    </p>
+
+                    <button class="product-button">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <img src="images/7.jpeg" alt="colors">
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                       Material
+                    </span>
+
+                    <h3>colors</h3>
+
+                    <p class="product-price">
+                        UGX 8,000
+                    </p>
+
+                    <p class="shop-name">
+                         Man's Shop
+                    </p>
+
+                    <p class="shop-location">
+                         Bukere
+                    </p>
+
+                    <button class="product-button">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="price-comparison" id="comparison">
+
+    <div class="container">
+
+        <h2>Compare Prices</h2>
+
+        <p class="section-description">
+            Find the best price from local shops.
+        </p>
+
+        <div class="comparison-card">
+
+            
+
+            <div class="comparison-header">
+
+                <div>
+                    <span class="product-category">
+                        Food
+                    </span>
+
+                    <h3>Rice 5kg</h3>
+                </div>
+
+                <span class="best-price">
+                    Best Price
+                </span>
+
+            </div>
+
+
+            
+
+            <div class="price-row">
+
+                <div class="shop-info">
+                   
+                    <h4>Sady's shop</h4>
+
+                    <p>Bukere-B</p>
+
+                </div>
+
+                <div class="price">
+
+                    <strong>UGX 17,500</strong>
+
+                    <span class="cheapest">
+                        👆 Cheapest
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="price-row">
+
+                <div class="shop-info">
+                  
+
+                    <h4>John's Shop</h4>
+
+                    <p> kyaka</p>
+
+                </div>
+
+                <div class="price">
+
+                    <strong>UGX 18,000</strong>
+
+                </div>
+
+            </div>
+
+            <div class="price-row">
+
+                <div class="shop-info">
+                   
+
+                    <h4>Market Shop</h4>
+
+                    <p> sweswe</p>
+
+                </div>
+
+                <div class="price">
+
+                    <strong>UGX 20,000</strong>
+
+                </div>
+
+            </div>
+
+
+            <button class="comparison-button">
+                View Shop Details
+            </button>
+
+            <p class="updated">
+                Price updated: 10 Aug 2026
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="shops" id="shops">
+
+    <div class="container">
+
+        <h2>Local Shops</h2>
+
+        <p class="section-description">
+            Discover shops and compare their products and prices.
+        </p>
+
+
+        
+
+        <div class="shop-grid">
+
+
+           
+
+            <div class="shop-card">
+
+                <div class="shop-image">
+                    <div class="product-image">
+                        <img src="images/9.jpeg" alt="colors">
+                    </div>
+                </div>
+
+                <div class="shop-info">
+
+                    <span class="shop-category">
+                        Clothing
+                    </span>
+
+                    <h3>Mama Sarah Shop</h3>
+
+                    <p class="shop-location">
+                         Bukere
+                    </p>
+
+                    <p class="shop-products">
+                         50+ Products
+                    </p>
+
+                    <button class="shop-button" onclick="showPhone()">
+                        📞 Contact Shop
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+      
+
+            <div class="shop-card">
+
+                <div class="shop-image">
+                    <div class="product-image">
+                        <img src="images/1.jpeg" alt="colors">
+                    </div>
+                </div>
+
+                <div class="shop-info">
+
+                    <span class="shop-category">
+                        Electronics
+                    </span>
+
+                    <h3>Sady's Shop</h3>
+
+                    <p class="shop-location">
+                         Bukere
+                    </p>
+
+                    <p class="shop-products">
+                         50+ Products
+                    </p>
+
+                    <button class="shop-button" onclick="showPhone()">
+                        📞 Contact Shop
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        
+
+            <div class="shop-card">
+
+                <div class="shop-image">
+                    <div class="product-image">
+                        <img src="images/4.jpeg" alt="colors">
+                    </div>
+                </div>
+
+                <div class="shop-info">
+
+                    <span class="shop-category">
+                        Material
+                    </span>
+
+                    <h3>Market Shop</h3>
+
+                    <p class="shop-location">
+                        mubende
+                    </p>
+
+                    <p class="shop-products">
+                         40+ Products
+                    </p>
+
+                    <button class="shop-button" onclick="showPhone()">
+                        📞 Contact Shop
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="shop-details" id="shop-details">
+
+    <div class="container">
+
+        <div class="shop-details-card">
+
+            
+
+            <div class="shop-details-header">
+
+                <div class="shop-details-image">
+                    <div class="product-image">
+                        <img src="images/2.jpeg" alt="colors">
+                    </div>
+                </div>
+
+                <div class="shop-details-title">
+
+                    <span class="shop-category">
+                        Grocery
+                    </span>
+
+                    <h2>Papa-leki's shop</h2>
+
+                    <p> Kabweza</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="shop-contact">
+
+                <div>
+                    <strong>📞 Phone</strong>
+                    <p>0787304733</p>
+                </div>
+
+                <div>
+                    <strong> Location</strong>
+                    <p>Nakawa</p>
+                </div>
+
+                <div>
+                    <strong>🛒 Category</strong>
+                    <p>Grocery</p>
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="shop-about">
+
+                <h3>About this shop</h3>
+
+                <p>
+                    Mama Sarah Shop is a local grocery shop
+                    offering everyday food and household products.
+                </p>
+
+            </div>
+
+
+            
+
+            <div class="shop-products-list">
+
+                <h3>Products Available</h3>
+
+
+                <div class="shop-product">
+
+                    <div>
+                        <h4>Rice 5kg</h4>
+                        <p>Food</p>
+                    </div>
+
+                    <strong>
+                        UGX 17,500
+                    </strong>
+
+                </div>
+
+
+                <div class="shop-product">
+
+                    <div>
+                        <h4>Sugar 1kg</h4>
+                        <p>Food</p>
+                    </div>
+
+                    <strong>
+                        UGX 5,000
+                    </strong>
+
+                </div>
+
+
+                <div class="shop-product">
+
+                    <div>
+                        <h4>Cooking Oil 1L</h4>
+                        <p>Food</p>
+                    </div>
+
+                    <strong>
+                        UGX 8,000
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <button class="contact-shop-button">
+                Contact Shop
+            </button>
+
+
+            <p class="shop-updated">
+                Prices updated: 10 Aug 2026
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="shop-cta">
+
+    <h2>Are you a local shop owner?</h2>
+
+    <p>
+        Add your shop and help customers discover your products.
+    </p>
+
+    <a href="shop-form.html" class="hero-button">
+        Register Your Shop
+    </a>
+
+</section>
+
+<div id="phonePopup" class="phone-popup">
+
+    <div class="phone-popup-content">
+
+        <button class="close-btn" onclick="closePhone()">
+            ×
+        </button>
+
+        <div class="phone-icon">
+            📞
+        </div>
+
+        <h2>Contact Shop</h2>
+
+        <p>Call this shop for more information:</p>
+
+        <a href="tel:0700123456" class="phone-number">
+            0700 123 456
+        </a>
+
+        <a href="tel:0700123456" class="call-btn">
+            📞 Call Shop
+        </a>
+
+    </div>
+
+</div>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+
+
+
+</body>
+</html>
