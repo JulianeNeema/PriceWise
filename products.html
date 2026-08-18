@@ -1067,114 +1067,50 @@ body {
 }
 
 
-@media (max-width: 768px) {
-
-    .products-hero {
-        padding: 50px 20px 35px;
-    }
-
-    .products-hero h1 {
-        font-size: 40px;
-    }
-
-    .search-section {
-        padding: 30px 16px 50px;
-    }
-
-    .search-box {
-        flex-direction: column;
-        padding: 8px;
-    }
-
-    .search-box button {
-        width: 100%;
-    }
-
-    .filters {
-        grid-template-columns: 1fr;
-    }
-
-    #searchResults {
-        grid-template-columns: 1fr;
-    }
-
-    .shop-cta {
-        padding: 45px 20px;
-    }
-
-    .shop-cta h2 {
-        font-size: 26px;
-    }
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 900px) {
-
+@media (max-width: 600px) {
     #searchResults,
-    .shop-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .shop-contact {
+    .shop-grid,
+    .product-grid {
         grid-template-columns: 1fr;
-    }
-}
-
-
-@media (max-width: 650px) {
-
-    .search-section {
-        padding: 50px 16px;
+        gap: 16px;
     }
 
-    .search-section > h2 {
-        font-size: 30px;
-    }
-
-    .search-box {
-        flex-direction: column;
-    }
-
-    .search-box input {
-        width: 100%;
-    }
-
-    .search-box button {
-        width: 100%;
-    }
-
-    .filters {
-        grid-template-columns: 1fr;
-    }
-
-    #searchResults,
-    .shop-grid {
-        grid-template-columns: 1fr;
-    }
-
+    .product-card,
+    .shop-card,
+    .product-result,
     .comparison-card {
-        padding: 20px;
+        border-radius: 12px;
+        padding: 16px;
     }
 
-    .price-row {
-        gap: 15px;
+    .product-card img,
+    .product-image,
+    .product-image img {
+        height: 160px;
     }
 
-    .shop-details-header {
-        align-items: flex-start;
+    .product-content h3,
+    .product-info h3,
+    .product-result h3 {
+        font-size: 18px;
     }
 
-    .shop-cta {
-        margin: 20px 16px 60px;
-        padding: 45px 20px;
+    .product-content p,
+    .product-result p {
+        font-size: 13px;
+        margin-bottom: 14px;
     }
 
-    .shop-cta h2 {
-        font-size: 26px;
+    .compare-btn,
+    .product-button,
+    .comparison-button,
+    .shop-button {
+        padding: 11px;
+        font-size: 14px;
     }
 }
+
+
 
 
 
@@ -1195,9 +1131,6 @@ body {
 }
 
 
-/* =========================
-   PRODUCT GRID
-========================= */
 
 .product-grid {
     display: grid;

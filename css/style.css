@@ -407,11 +407,6 @@ section.feature {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.30);
 }
 
-/* =========================================
-   LIGHT / DARK MODE
-========================================= */
-
-/* Smooth theme transition */
 
 body,
 header,
@@ -430,9 +425,7 @@ section.feature {
 }
 
 
-/* =========================================
-   LIGHT MODE
-========================================= */
+
 
 body {
     background: #f8fafc;
@@ -440,28 +433,27 @@ body {
 }
 
 
-/* Hero */
 
 .hero {
     background-color: #f8fafc;
 }
 
 
-/* Hero heading */
+
 
 .hero h1 {
     color: white;
 }
 
 
-/* Hero description */
+
 
 .hero-description {
     color: rgba(255, 255, 255, 0.92);
 }
 
 
-/* Feature section */
+
 
 section.feature {
     background: #465537;
@@ -469,9 +461,6 @@ section.feature {
 }
 
 
-/* =========================================
-   DARK MODE
-========================================= */
 
 body.dark-mode {
     background: #0f172a;
@@ -479,21 +468,21 @@ body.dark-mode {
 }
 
 
-/* Header */
+
 
 body.dark-mode header {
     background-color: #111827;
 }
 
 
-/* Navbar */
+
 
 body.dark-mode nav {
     background: rgba(0, 0, 0, 0.45);
 }
 
 
-/* Navigation */
+
 
 body.dark-mode #navLinks a {
     color: #f8fafc;
@@ -504,14 +493,12 @@ body.dark-mode #navLinks a:hover {
 }
 
 
-/* Hero */
 
 body.dark-mode .hero {
     background-color: #0f172a;
 }
 
 
-/* Hero text */
 
 body.dark-mode .hero h1 {
     color: white;
@@ -526,7 +513,6 @@ body.dark-mode .hero-description {
 }
 
 
-/* Small hero text */
 
 body.dark-mode .hero-small-text {
     background: rgba(34, 197, 94, 0.15);
@@ -536,7 +522,7 @@ body.dark-mode .hero-small-text {
 }
 
 
-/* Feature section */
+
 
 body.dark-mode section.feature {
     background: #111827;
@@ -544,7 +530,7 @@ body.dark-mode section.feature {
 }
 
 
-/* Theme button */
+
 
 body.dark-mode .theme-btn {
     background: rgba(255, 255, 255, 0.15);
@@ -552,7 +538,7 @@ body.dark-mode .theme-btn {
 }
 
 
-/* Hero button */
+
 
 body.dark-mode .hero-button {
     background: #16a34a;
@@ -566,44 +552,38 @@ body.dark-mode .hero-button:hover {
 
 
 @media (max-width: 768px) {
-
     .hero {
         flex-direction: column;
-
         padding: 110px 20px 60px;
-
         gap: 40px;
-    }
-
-    .hero-images {
-        width: 100%;
-
-        height: 400px;
-    }
-
-    .hero-content {
-        width: 100%;
-
         text-align: center;
     }
 
-    .hero-small-text {
-        margin-left: auto;
-        margin-right: auto;
+    .hero-content,
+    .hero-images {
+        width: 100%;
     }
 
-    .hero h1 {
-        font-size: 3rem;
+    .hero-images {
+        height: auto;
+        flex-wrap: wrap;
     }
 
+    .hero-images img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .hero-small-text,
     .hero-description {
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline: auto;
     }
 
     .hero-button {
         width: 100%;
+    }
 
-        text-align: center;
+    .hero h1 {
+        font-size: 2.4rem;
     }
 }
