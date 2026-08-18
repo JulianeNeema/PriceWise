@@ -1067,49 +1067,6 @@ body {
 }
 
 
-@media (max-width: 600px) {
-    #searchResults,
-    .shop-grid,
-    .product-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .product-card,
-    .shop-card,
-    .product-result,
-    .comparison-card {
-        border-radius: 12px;
-        padding: 16px;
-    }
-
-    .product-card img,
-    .product-image,
-    .product-image img {
-        height: 160px;
-    }
-
-    .product-content h3,
-    .product-info h3,
-    .product-result h3 {
-        font-size: 18px;
-    }
-
-    .product-content p,
-    .product-result p {
-        font-size: 13px;
-        margin-bottom: 14px;
-    }
-
-    .compare-btn,
-    .product-button,
-    .comparison-button,
-    .shop-button {
-        padding: 11px;
-        font-size: 14px;
-    }
-}
-
 
 
 
@@ -1145,9 +1102,7 @@ body {
 }
 
 
-/* =========================
-   PRODUCT CARD
-========================= */
+
 
 .product-card {
     background-color: rgb(79, 121, 67);
@@ -1162,7 +1117,7 @@ body {
 }
 
 
-/* Card hover */
+
 
 .product-card:hover {
     transform: translateY(-5px);
@@ -1171,9 +1126,6 @@ body {
 }
 
 
-/* =========================
-   PRODUCT IMAGE
-========================= */
 
 .product-image {
     width: 100%;
@@ -1192,9 +1144,6 @@ body {
 }
 
 
-/* =========================
-   PRODUCT INFORMATION
-========================= */
 
 .product-info {
     padding: 20px;
@@ -1287,6 +1236,57 @@ body {
 .comparison-button:hover {
 
     box-shadow: 0 0 5px #16e249,0 0 25px #16e249,0 0 50px #16e249,0 0 100px #16e249, 0 0 200px;
+}
+
+@media (max-width: 600px) {
+    .product-grid,
+    #searchResults,
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 16px;
+    }
+
+    .product-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .product-image,
+    .product-card img {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+    }
+
+    .product-content,
+    .product-info {
+        padding: 14px;
+        overflow: hidden;
+    }
+
+    .product-category,
+    .shop-category {
+        white-space: nowrap;
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .product-content h3,
+    .product-info h3 {
+        font-size: 18px;
+        white-space: normal;
+    }
+
+    .product-button,
+    .compare-btn {
+        width: auto;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
 }
     </style>
 </head>
